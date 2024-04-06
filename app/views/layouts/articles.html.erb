@@ -1,0 +1,33 @@
+<% content_for :main_content do %>
+    <header id="articles" class="container">
+        <div class="menu">
+            <div class="left">
+                <div class="burger">
+                    <div></div>
+                </div>
+                <img src="https://tengrinews.kz/tengri_new/img/logo.svg" alt="TengriNews Logo">
+                <nav>
+                    <a href="/">Новости</a>
+                    <a href="/">Статьи</a>
+                    <a href="/">Что будет с Казахстаном?</a>
+                </nav>
+            </div>
+            <div class="right">
+                <button>
+                    <img src="https://tengrinews.kz/tengri_new/img/menu-lang.svg" alt="Language Switch">
+                </button>
+                <button>
+                    <img src="https://tengrinews.kz/tengri_new/img/menu-search.svg" alt="Search">
+                </button>
+            </div>
+        </div>
+        <a class="wp_link" href="https://whatsapp.com/channel/0029VaC8d1M3AzNVm4DlYk2H">
+            <div>Подписывайтесь на канал Tengrinews.kz в WhatsApp</div>
+            <img src="https://tengrinews.kz/tengri_new/img/urgent-button.svg" alt="Button">
+        </a>
+    </header>
+    <div class="main-content">
+        <%= yield %>
+    </div>
+<% end %>
+<%= render template: 'layouts/application' %>

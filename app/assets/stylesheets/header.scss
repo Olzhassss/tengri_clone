@@ -1,0 +1,33 @@
+@use "_variables" as *;
+
+header#top {
+  background-color: $black;
+  .container {
+    color: $white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: fit-content;
+    padding: 0 2rem;
+    nav {
+      display: flex;
+      > a {
+        padding: 1.5rem 0;
+        margin-right: 2rem;
+        border-bottom: solid 4px transparent;
+        &:hover,
+        &:active {
+          border-color: $green;
+          color: inherit;
+        }
+      }
+    }
+    &::after {
+      content: none;
+    }
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}

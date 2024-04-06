@@ -1,0 +1,10 @@
+// Sassy
+@use "./normalize.css";
+@use "skeleton";
+@import "header";
+@import "footer";
+@import "articles";
+
+body {
+  background-color: #f1f2f1;
+}

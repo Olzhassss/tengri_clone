@@ -1,0 +1,98 @@
+@use "_variables" as *;
+
+header#articles {
+  .menu {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    padding: 1rem 2.5rem;
+    .left {
+      //   flex-grow: 1;
+      display: flex;
+      align-items: center;
+      .burger {
+        cursor: pointer;
+        div {
+          position: relative;
+          display: inline-block;
+          width: 24px;
+          height: 0;
+          border-top: 2px solid $black;
+          border-bottom: 2px solid $black;
+          transition: all 1s ease-in;
+          &::after,
+          &::before {
+            content: "";
+            box-sizing: border-box;
+            top: -10px;
+            position: absolute;
+            width: 24px;
+            border: 2px solid $black;
+            transition: all 1s ease-in;
+          }
+          &::after {
+            top: unset;
+            bottom: -10px;
+          }
+        }
+        div.rotated {
+          rotate: 45deg;
+          &::after {
+            bottom: 0;
+            rotate: 45deg;
+          }
+          &::before {
+            top: 0;
+            rotate: -45deg;
+          }
+        }
+      }
+      img {
+        margin-left: 2rem;
+        margin-right: 2rem;
+      }
+      nav > a {
+        padding: 0.5rem;
+        color: inherit;
+        &:hover {
+          color: $green;
+        }
+      }
+    }
+    .right {
+      button {
+        text-align: center;
+        vertical-align: middle;
+        display: inline;
+        border: none;
+        padding: 0;
+        margin: 0 0 0 0.5rem;
+        &:hover {
+          img {
+            opacity: 0.5;
+          }
+        }
+      }
+    }
+  }
+  a.wp_link {
+    position: relative;
+    display: block;
+    padding: 1rem;
+    background-color: $green;
+    div {
+      display: block;
+      text-align: center;
+      color: $white;
+      font-size: medium;
+    }
+    img {
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+    }
+  }
+  a {
+    text-decoration: none;
+  }
+}
