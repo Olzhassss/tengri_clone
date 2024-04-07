@@ -67,3 +67,9 @@ group :test do
 end
 
 gem "dartsass-sprockets", "~> 3.1"
+
+gem "activeadmin", "~> 3.2"
+
+gem "devise", "~> 4.9"
+
+gem "routing-filter", "~> 0.7.0"
