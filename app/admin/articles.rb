@@ -5,7 +5,7 @@ ActiveAdmin.register Article do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :title, :views, :thumb_caption, :published_at, :tldr
+  permit_params :title, :views, :thumb_caption, :published_at, :tldr
   #
   # or
   #
@@ -15,4 +15,6 @@ ActiveAdmin.register Article do
   #   permitted
   # end
   
+  remove_filter :views, :thumb_caption
+
 end
