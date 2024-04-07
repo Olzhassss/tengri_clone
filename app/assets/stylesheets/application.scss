@@ -1,10 +1,32 @@
 // Sassy
-@use "./normalize.css";
+@use "normalize";
 @use "skeleton";
+@use "variables" as *;
 @import "header";
 @import "footer";
-@import "articles";
 
 body {
   background-color: #f1f2f1;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.no-break {
+  white-space: nowrap;
+}
+
+h5 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.alert,
+.notice {
+  padding: 2rem;
+  border-radius: 4px;
+  border-color: #f1f2f1;
+  border-width: 1px;
+  background: $white;
 }

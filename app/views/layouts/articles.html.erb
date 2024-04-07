@@ -1,6 +1,7 @@
 <% content_for :main_content do %>
     <header id="articles" class="container">
-        <div class="menu">
+        <div class="menu bg-white
+">
             <div class="left">
                 <div class="burger">
                     <div></div>
@@ -26,8 +27,22 @@
             <img src="https://tengrinews.kz/tengri_new/img/urgent-button.svg" alt="Button">
         </a>
     </header>
-    <div class="main-content">
-        <%= yield %>
+    <div id="articles-layout" class="row container bg-white">
+        <div id="articles-content">
+            <%= yield %>
+        </div>
+        <div id="side-feed">
+            <button>Последние</button><button>Популярные</button>
+            <div>
+                <% for item in Array.new(25) %>
+                    <h1>A</h1>
+                <% end %>
+                <%# latest / popular news %>
+            </div>
+        </div>
     </div>
+<% end %>
+<% content_for :stylesheets do %>
+    <%= stylesheet_link_tag "articles", "data-turbo-track": "reload" %>
 <% end %>
 <%= render template: 'layouts/application' %>
