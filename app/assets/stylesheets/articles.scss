@@ -296,8 +296,12 @@ header#articles {
     margin-bottom: 1.5rem;
     h1 {
       margin: 0;
+      flex-shrink: 0;
+      margin-right: 2rem;
     }
     .tags {
+      display: flex;
+      flex-wrap: nowrap;
       overflow-x: auto;
       a {
         margin: 0.5rem;
@@ -308,6 +312,7 @@ header#articles {
         border-radius: 4px;
         color: $black;
         letter-spacing: normal;
+        white-space: nowrap;
       }
     }
   }
