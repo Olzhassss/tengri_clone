@@ -25,9 +25,9 @@ essay_file.close
     i = index.to_s
     a = Article.new(
         title: "Article " + i,
-        views: index,
+        views: rand(1..1000),
         thumb_caption: "Caption " + i,
-        published_at: DateTime.now + index.hours,
+        published_at: DateTime.now + rand(1..100).hours,
         tldr: "TLDR " + i,
         article_category_id: ["news", "articles"].sample,
         image_url: "https://tengrinews.kz/userdata/news/2024/news_531778/thumb_m/photo_468339.jpeg",
