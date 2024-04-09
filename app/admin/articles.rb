@@ -5,7 +5,8 @@ ActiveAdmin.register Article do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :title, :views, :thumb_caption, :published_at, :tldr, :article_category, :article_category_id, :article_category_slug, :image_url, tag_ids:[]
+  permit_params :title, :views, :thumb_caption, :published_at, :tldr, :article_category, :article_category_id, :article_category_slug, :image_url, :content, tag_ids:[]
+
   #
   # or
   #
@@ -15,7 +16,15 @@ ActiveAdmin.register Article do
   #   permitted
   # end
   
-  remove_filter :views, :thumb_caption, :article_category_id, :image_url, :tags
+  remove_filter :views, :thumb_caption, :article_category_id, :image_url, :tags, :content
+
+  index do
+    column :id
+    column :title
+    column :views
+    column :published_at
+    actions
+  end
 
   form do |f|
     f.semantic_errors
