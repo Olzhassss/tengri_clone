@@ -1,16 +1,33 @@
-<div>
-  <%# Datetime %>
-</div>
-<h1><%= @article.title %></h1>
-<hr>
-<div>
-  <%# Views & comms count & share %>
-</div>
-<div>
-  <picture>
-    <%# thumbnail %>
-  </picture>
-  <caption>
-    <%= @article.thumb_caption %>
-  </caption>
-</div>
+<% content_for :articles_header do %>
+    <div class="date">
+        <%= format_datetime(@article.published_at) %>
+    </div>
+    <h1><%= @article.title %></h1>
+    <hr class="green"><hr class="gray">
+<% end %>
+<% content_for :articles_content do %>
+    <div id="article">
+        <div class="stats">
+            <img src="https://tengrinews.kz/tengri_new/img/circle-viewings.svg">
+            <span><%= @article.views %></span>
+            <%# Views & comms count & share %>
+        </div>
+        <div class="picture">
+            <picture>
+                <%# Picture %>
+                <source srcset="https://tengrinews.kz/userdata/news/2024/news_531499/thumb_m/photo_468027.jpeg" type="image/jpeg">
+                <source media="(max-width: 640px)" srcset="https://tengrinews.kz/userdata/news/2024/news_531499/thumb_m/photo_468027.jpeg" type="image/jpeg">
+                <img class="main-news_top_item_img" loading="lazy" src="https://tengrinews.kz/userdata/news/2024/news_531499/thumb_m/photo_468027.jpeg" alt="Фото: МЧС">
+            </picture>
+            <span><%= @article.thumb_caption %></span>
+        </div>
+        <div class="text">
+            <h4><%= @article.tldr %></h4>
+            <hr>
+            <div id="article-text">
+                <%# content %>
+                Content
+            </div>
+        </div>
+    </div>
+<% end %>

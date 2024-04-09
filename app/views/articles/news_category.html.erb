@@ -1,0 +1,17 @@
+<% content_for :articles_header do %>
+    <div class="breadcrumb">
+        <%= link_to "Главная |", "/" %> <%= @category.title %>
+    </div>
+    <h1><%= @category.title %></h1>
+    <hr class="green"><hr class="gray">
+<% end %>
+<% content_for :articles_content do %>
+    <div id="news-list">
+        <% @articles.each do |article| %>
+            <%= render 'article_item', article: article %>
+        <% end %>
+    </div>
+    <div class="pagination">
+        <%= paginate @articles %>
+    </div>
+<% end %>

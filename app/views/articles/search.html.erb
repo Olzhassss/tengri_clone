@@ -1,0 +1,15 @@
+<% content_for :articles_header do %>
+    <%= render 'searchbox' %>
+    <h2><%= params[:query] %></h2>
+    <p>Найдено результатов: <%= @count %></p>
+<% end %>
+<% content_for :articles_content do %>
+    <div id="search-list">
+        <% @articles.each do |article| %>
+            <%= render 'article_item', article: article %>
+        <% end %>
+    </div>
+    <div class="pagination">
+        <%= paginate @articles %>
+    </div>
+<% end %>

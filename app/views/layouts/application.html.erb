@@ -7,13 +7,16 @@
         <%= csp_meta_tag %>
         <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
         <%= javascript_importmap_tags %>
-        <%= yield(:stylesheets) %>
+        <%= turbo_refreshes_with method: :morph, scroll: :preserve %>
+        <%= yield :stylesheets %>
+        <%= yield :metatags %>
     </head>
     <body>
         <%= render 'layouts/header' %>
         <%= content_for?(:main_content) ? yield(:main_content) : yield %>
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
+        <!--<div class="notice"><%= notice %></div>
+        <div class="alert"><%= alert %></div>-->
         <%= render 'layouts/footer' %>
+        <%= yield :scripts %>
     </body>
 </html>

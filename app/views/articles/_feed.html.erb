@@ -1,0 +1,15 @@
+<%= turbo_frame_tag "feed" do %>
+    <% @feed_articles.each do |feed_article| %>
+        <article>
+            <%= link_to feed_article.title, article_path(feed_article), data: {turbo_frame: "_top"} %>
+            <div class="footer">
+                <span><%= format_datetime(feed_article.published_at) %></span>
+                <span class="right no-break">
+                    <img src="https://tengrinews.kz/tengri_new/img/viewings.svg">
+                    Views <%= feed_article.views %>
+                </span>
+            </div>
+        </article>
+    <% end %>
+<% end %>
+<%# latest / popular news %>

@@ -1,0 +1,18 @@
+<article>
+    <a href="<%= article_path(article) %>">
+        <picture>
+            <%# Picture %>
+            <source srcset="https://tengrinews.kz/userdata/news/2024/news_531499/thumb_m/photo_468027.jpeg" type="image/jpeg">
+            <source media="(max-width: 640px)" srcset="https://tengrinews.kz/userdata/news/2024/news_531499/thumb_m/photo_468027.jpeg" type="image/jpeg">
+            <img class="main-news_top_item_img" loading="lazy" src="https://tengrinews.kz/userdata/news/2024/news_531499/thumb_m/photo_468027.jpeg" alt="Фото: МЧС">
+        </picture>
+    </a>
+    <h4><%= link_to article.title, article %></h4>
+    <p><%= article.tldr  %></p>
+    <div>
+        <span><%= format_datetime(article.published_at) %>&emsp;
+        </span>
+        <span class="no-break"><img src="https://tengrinews.kz/tengri_new/img/viewings.svg"> <%= article.views %></span>
+        <%# Footer %>
+    </div>
+</article>

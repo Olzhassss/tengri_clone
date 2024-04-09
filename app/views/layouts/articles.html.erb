@@ -1,23 +1,24 @@
 <% content_for :main_content do %>
     <header id="articles" class="container">
-        <div class="menu bg-white
-">
+        <div class="menu bg-white">
             <div class="left">
                 <div class="burger">
                     <div></div>
                 </div>
-                <img src="https://tengrinews.kz/tengri_new/img/logo.svg" alt="TengriNews Logo">
+                <a href="/">
+                    <img src="https://tengrinews.kz/tengri_new/img/logo.svg" alt="TengriNews Logo">
+                </a>
                 <nav>
-                    <a href="/">Новости</a>
-                    <a href="/">Статьи</a>
-                    <a href="/">Что будет с Казахстаном?</a>
+                    <%= link_to "Новости", "/news" %>
+                    <%= link_to "Статьи", "/articles" %>
+                    <%# <a href="/">Что будет с Казахстаном?</a> %>
                 </nav>
             </div>
             <div class="right">
                 <button>
                     <img src="https://tengrinews.kz/tengri_new/img/menu-lang.svg" alt="Language Switch">
                 </button>
-                <button>
+                <button id="search-button">
                     <img src="https://tengrinews.kz/tengri_new/img/menu-search.svg" alt="Search">
                 </button>
             </div>
@@ -26,23 +27,33 @@
             <div>Подписывайтесь на канал Tengrinews.kz в WhatsApp</div>
             <img src="https://tengrinews.kz/tengri_new/img/urgent-button.svg" alt="Button">
         </a>
+        <div id="search-container">
+            <%= render 'searchbox' %>
+        </div>
     </header>
     <div id="articles-layout" class="row container bg-white">
+        <div id="articles-header">
+            <%= yield(:articles_header) %>
+        </div>
         <div id="articles-content">
-            <%= yield %>
+            <%= content_for?(:articles_content) ? yield(:articles_content) : yield %>
         </div>
         <div id="side-feed">
-            <button>Последние</button><button>Популярные</button>
-            <div>
-                <% for item in Array.new(25) %>
-                    <h1>A</h1>
+            <%= sort_link(column: "published_at", label: "Последние", active:true) %>
+            <%= sort_link(column: "views", label: "Популярные") %>
+            <%# <%= button_to 'Последние', recent_articles_path, remote: true, method: :get, id: 'fetch-recent-articles' %>
+            <%# <%= button_to 'Популярные', recent_articles_path, remote: true, method: :get, id: 'fetch-recent-articles' %>
+            <div id="side-feed-content">
+                <%= turbo_frame_tag "feed", src: feed_articles_path(column: "published_at", direction: "desc") do %>
                 <% end %>
-                <%# latest / popular news %>
             </div>
         </div>
     </div>
 <% end %>
 <% content_for :stylesheets do %>
     <%= stylesheet_link_tag "articles", "data-turbo-track": "reload" %>
+<% end %>
+<% content_for :scripts do %>
+    <%= javascript_include_tag "feed", "search", "data-turbo-track": "reload" %>
 <% end %>
 <%= render template: 'layouts/application' %>

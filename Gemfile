@@ -73,3 +73,7 @@ gem "activeadmin", "~> 3.2"
 gem "devise", "~> 4.9"
 
 gem "routing-filter", "~> 0.7.0"
+
+gem "kaminari", "~> 1.2"
+
+gem "kaminari-i18n", "~> 0.5.0"
