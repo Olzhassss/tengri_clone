@@ -288,10 +288,34 @@ header#articles {
       color: $gray;
     }
   }
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    margin-bottom: 1.5rem;
+    h1 {
+      margin: 0;
+    }
+    .tags {
+      overflow-x: auto;
+      a {
+        margin: 0.5rem;
+        display: inline-block;
+        text-decoration: none;
+        padding: 0.5rem 0.8rem;
+        background-color: #f2fbf2;
+        border-radius: 4px;
+        color: $black;
+        letter-spacing: normal;
+      }
+    }
+  }
 }
 #news-list,
 #articles-list,
-#search-list {
+#search-list,
+#tag-articles-list {
   // News item
   article {
     display: flow-root;

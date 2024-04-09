@@ -20,10 +20,12 @@ class ArticlesController < ApplicationController
 
   def news_category
     @articles = get_category("news", :page, 5).order("published_at desc")
+    @tags = Tag.all
   end
 
   def articles_category
-    @articles = get_category("articles", :page, 5)
+    @articles = get_category("articles", :page, 5).order("published_at desc")
+    @tags = Tag.all
   end
 
   def search
@@ -31,6 +33,17 @@ class ArticlesController < ApplicationController
     @count = @articles.count
     @articles = @articles.page(params[:page]).per(15)
     # @query = params[:query]
+  end
+
+  def tags
+    if params[:tag].present?
+      @articles = Article.with_tag(params[:tag]).page(params[:page]).per(15)
+      @tags = Tag.all
+      @tag = @tags.find_by(id: params[:tag])
+      @tags = @tags.limit(15)
+    else
+      redirect_to articles_path
+    end
   end
 
   private

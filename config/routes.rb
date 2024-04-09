@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     collection do
       get :feed, to: 'articles#feed'
       get :search, to: 'articles#search'
+      get :tags, to: 'articles#tags'
     end
   end
 end

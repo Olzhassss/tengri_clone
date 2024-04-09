@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_09_164707) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_09_170122) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -54,6 +54,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_09_164707) do
     t.string "article_category_id"
     t.string "image_url"
     t.index ["article_category_id"], name: "index_articles_on_article_category_id"
+  end
+
+  create_table "articles_tags", id: false, force: :cascade do |t|
+    t.integer "article_id", null: false
+    t.integer "tag_id", null: false
+    t.index ["article_id"], name: "index_articles_tags_on_article_id"
+    t.index ["tag_id"], name: "index_articles_tags_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "articles", "article_categories", primary_key: "slug"

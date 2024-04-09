@@ -9,8 +9,8 @@
                     <img src="https://tengrinews.kz/tengri_new/img/logo.svg" alt="TengriNews Logo">
                 </a>
                 <nav>
-                    <%= link_to "Новости", "/news" %>
-                    <%= link_to "Статьи", "/articles" %>
+                    <%= link_to "Новости", news_category_path %>
+                    <%= link_to "Статьи", articles_category_path %>
                     <%# <a href="/">Что будет с Казахстаном?</a> %>
                 </nav>
             </div>
@@ -41,8 +41,6 @@
         <div id="side-feed">
             <%= sort_link(column: "published_at", label: "Последние", active:true) %>
             <%= sort_link(column: "views", label: "Популярные") %>
-            <%# <%= button_to 'Последние', recent_articles_path, remote: true, method: :get, id: 'fetch-recent-articles' %>
-            <%# <%= button_to 'Популярные', recent_articles_path, remote: true, method: :get, id: 'fetch-recent-articles' %>
             <div id="side-feed-content">
                 <%= turbo_frame_tag "feed", src: feed_articles_path(column: "published_at", direction: "desc") do %>
                 <% end %>
