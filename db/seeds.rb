@@ -9,6 +9,32 @@
 #   end
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development? && !AdminUser.exists?(email: 'admin@example.com')
 
-["news", "articles"].each do |slug|
-    ArticleCategory.find_or_create_by!(slug: slug)
+["News", "Articles"].each do |title|
+    ArticleCategory.find_or_create_by!(slug: title.downcase, title:title)
+end
+
+(0..10).to_a.each do |index|
+    Tag.find_or_create_by!(name: "Tag " + index.to_s)
+end
+
+essay_file = File.open(File.join(Dir.pwd,"db","essay.txt"))
+essay = essay_file.read
+essay_file.close
+
+(0..50).to_a.each do |index|
+    i = index.to_s
+    a = Article.new(
+        title: "Article " + i,
+        views: index,
+        thumb_caption: "Caption " + i,
+        published_at: DateTime.now + index.hours,
+        tldr: "TLDR " + i,
+        article_category_id: ["news", "articles"].sample,
+        image_url: "https://tengrinews.kz/userdata/news/2024/news_531778/thumb_m/photo_468339.jpeg",
+        content: essay
+    )
+    how_many = (0..10).to_a.sample
+    ids = (0..10).to_a.sample(how_many)
+    a.tags << Tag.where(id: ids)
+    a.save
 end
