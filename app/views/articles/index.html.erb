@@ -3,10 +3,7 @@
         <article>
             <a href="<%= article_path(article) %>">
                 <picture>
-                    <%# Picture %>
-                    <source srcset="https://tengrinews.kz/userdata/news/2024/news_531499/thumb_m/photo_468027.jpeg" type="image/jpeg">
-                    <source media="(max-width: 640px)" srcset="https://tengrinews.kz/userdata/news/2024/news_531499/thumb_m/photo_468027.jpeg" type="image/jpeg">
-                    <img class="main-news_top_item_img" loading="lazy" src="https://tengrinews.kz/userdata/news/2024/news_531499/thumb_m/photo_468027.jpeg" alt="Фото: МЧС">
+                    <img class="main-news_top_item_img" loading="lazy" src="<%= article.image_url %>">
                 </picture>
             </a>
             <h5> <%= link_to article.title, article %></h5>

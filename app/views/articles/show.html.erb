@@ -15,9 +15,8 @@
         <div class="picture">
             <picture>
                 <%# Picture %>
-                <source srcset="https://tengrinews.kz/userdata/news/2024/news_531499/thumb_m/photo_468027.jpeg" type="image/jpeg">
-                <source media="(max-width: 640px)" srcset="https://tengrinews.kz/userdata/news/2024/news_531499/thumb_m/photo_468027.jpeg" type="image/jpeg">
-                <img class="main-news_top_item_img" loading="lazy" src="https://tengrinews.kz/userdata/news/2024/news_531499/thumb_m/photo_468027.jpeg" alt="Фото: МЧС">
+                <img class="main-news_top_item_img" loading="lazy" src="<%= @article.image_url %>
+" alt="Фото: МЧС">
             </picture>
             <span><%= @article.thumb_caption %></span>
         </div>
